@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>NOAA Data in the Classroom - Understanding El Ni&ntilde;o</title>
+
+<link rel="stylesheet" type="text/css" href="css/quiz.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<!-- In style below, category1, category2, etc., make sure that there are n + 1 categorys matching your number of questions + 1 extra category for the array -->
+
+<style>
+.answers li {
+list-style: upper-alpha;
+}
+
+label {
+margin-left: 0.5em;
+cursor: pointer;
+}
+
+#results {
+background: #dddada;
+color: 000000;
+padding: 3px;
+text-align: center;
+width: 200px;
+cursor: pointer;
+border: 1px solid gray;
+}
+
+#results:hover {
+background: #3d91b8;
+color: #ffffff;
+padding: 3px;
+text-align: center;
+width: 200px;
+cursor: pointer;
+border: 1px solid gray;
+}
+
+#categorylist {
+margin-top: 6px;
+display: none;
+}
+
+#category1, #category2 {
+display: none;
+}
+
+#closing {
+display: none;
+font-style: italic;
+}
+</style>
+
+
+<script>
+$(document).ready(function()
+{    $("#results").click(function() {
+
+if (!$("input[@name=q1]:checked").val()
+) {
+$.ajaxSetup({async: false});
+}
+
+else {
+var cat1name = "1";
+var cat2name = "none";
+
+var cat1 = ($("input[@name=q1]:checked").val() != "b");
+
+var cat2 = (!cat1); var categories = [];
+
+if (cat1) { categories.push(cat1name) };
+if (cat2) { categories.push(cat2name) };
+
+var catStr = 'You answered the following questions incorrectly: ' + categories.join(', ') + '';
+$("#categorylist").text(catStr);
+$("#categorylist").show("slow");
+
+if (cat1) { $("#category1").show("slow"); };
+if (cat2) { $("#category2").show("slow"); };
+
+{ $("#closing").show("slow"); };
+}
+    });});
+</script>
+
+</head>
+
+<body>
+
+<!--Here is the question. Edit it for context.-->
+
+<p class="question"><strong>Question 1:</strong> Lines of latitude indicate?</p>
+
+<ul class="answers">            
+<input type="radio" name="q1" value="a" id="q1a"><label for="q1a">Degrees of temperature</label><br/>          
+<input type="radio" name="q1" value="b" id="q1b"><label for="q1b">Degrees north and south of the equator</label><br/>            
+<input type="radio" name="q1" value="c" id="q1c"><label for="q1c">Areas of equal temperature</label><br/>            
+<input type="radio" name="q1" value="d" id="q1d"><label for="q1d">Representations of colors to indicate temperature</label><br/>       
+</ul>        
+
+
+<br/>
+<div id="results">            
+Check my answer
+</div>                
+
+<div id="category1">            
+<p>              
+<strong>Question 1:</strong> Incorrect. Please try again.</p>        
+</div>        
+
+<div id="category2">   
+<p>                
+Right answer!</p>        
+</div>
+
+<div id="closing"/>
+
+<!--Change the link below to your live link. Don't link back to these templates--> 
+
+<p><a href="https://test2.nnvl.noaa.gov/StoryMaps/quiztemplates/1question.html">Try Again</a></p>
+</div>
+
+
+</body>
+</html>

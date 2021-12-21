@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>NOAA Data in the Classroom - Understanding El Ni&ntilde;o</title>
+
+<link rel="stylesheet" type="text/css" href="css/quiz.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<!-- In style below, category1, category2, etc., make sure that there are n + 1 categorys matching your number of questions + 1 extra category for the array -->
+
+<style>
+.answers li {
+list-style: upper-alpha;
+}
+
+label {
+margin-left: 0.5em;
+cursor: pointer;
+}
+
+#results {
+background: #dddada;
+color: 000000;
+padding: 3px;
+text-align: center;
+width: 200px;
+cursor: pointer;
+border: 1px solid gray;
+}
+
+#results:hover {
+background: #3d91b8;
+color: #ffffff;
+padding: 3px;
+text-align: center;
+width: 200px;
+cursor: pointer;
+border: 1px solid gray;
+}
+
+#categorylist {
+margin-top: 6px;
+display: none;
+}
+
+#category1, #category2, #category3, #category4, #category5 {
+display: none;
+}
+
+#closing {
+display: none;
+font-style: italic;
+}
+</style>
+
+<script>
+$(document).ready(function()
+{    $("#results").click(function() {
+
+if (!$("input[@name=q1]:checked").val() ||
+!$("input[@name=q2]:checked").val() ||
+!$("input[@name=q3]:checked").val()
+) {
+$.ajaxSetup({async: false});
+}
+
+else {
+var cat1name = "1";
+var cat2name = "2";
+var cat3name = "3";
+var cat4name = "4";
+var cat5name = "none";
+
+//cat1 is the first question, and the answer to it is != "b" below. See? and then cat2's answer is c, etc. Change them to what you wish. cat5's answer is meaningless, so anything can be in there, it's the array//
+
+var cat1 = ($("input[@name=q1]:checked").val() != "b");
+
+var cat2 = ($("input[@name=q2]:checked").val() != "c");
+
+var cat3 = ($("input[@name=q3]:checked").val() != "a");
+
+var cat4 = ($("input[@name=q4]:checked").val() != "d");
+
+var cat5 = ($("input[@name=q5]:checked").val() != "c");
+
+var cat5 = (!cat1 && !cat2 && !cat3 && !cat5); var categories = [];
+
+if (cat1) { categories.push(cat1name) };
+if (cat2) { categories.push(cat2name) };
+if (cat3) { categories.push(cat3name) };
+if (cat4) { categories.push(cat4name) };
+if (cat5) { categories.push(cat5name) };
+
+
+var catStr = 'You answered the following questions incorrectly: ' + categories.join(', ') + '';
+$("#categorylist").text(catStr);
+$("#categorylist").show("slow");
+
+if (cat1) { $("#category1").show("slow"); };
+if (cat2) { $("#category2").show("slow"); };
+if (cat3) { $("#category3").show("slow"); };
+if (cat4) { $("#category4").show("slow"); };
+if (cat5) { $("#category5").show("slow"); };
+
+{ $("#closing").show("slow"); };
+}
+    });});
+</script>
+
+</head>
+
+<body>
+
+<!--Here are the questions. Edit them for context.-->
+
+<p class="question"><strong>Question 1:</strong> Lines of latitude indicate?</p>
+
+<ul class="answers">            
+<input type="radio" name="q1" value="a" id="q1a"><label for="q1a">Degrees of temperature</label><br/>          
+<input type="radio" name="q1" value="b" id="q1b"><label for="q1b">Degrees north and south of the equator</label><br/>
+<input type="radio" name="q1" value="c" id="q1c"><label for="q1c">Areas of equal temperature</label><br/>            
+<input type="radio" name="q1" value="d" id="q1d"><label for="q1d">Representations of colors to indicate temperature</label><br/>       
+</ul>        
+
+
+<p class="question"><strong>Question 2:</strong> According to the map, the average monthly sea surface temperature at 5<sup>o</sup> North and 140<sup>o</sup> West is approximately:</p>        
+
+<ul class="answers">            
+<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">15<sup>o</sup> Celsius</label><br/>           
+<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">20<sup>o</sup> Celsius</label><br/>            
+<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">26<sup>o</sup> Celsius</label><br/>           
+<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">31<sup>o</sup> Celsius</label><br/>       
+</ul>        
+
+<p class="question"><strong>Question 3:</strong> According to the map, the average monthly sea surface temperature at 5<sup>o</sup> North and 140<sup>o</sup> West is approximately:</p>
+
+<ul class="answers">
+<input type="radio" name="q3" value="a" id="q3a"><label for="q3a">15<sup>o</sup> Celsius</label><br/>
+<input type="radio" name="q3" value="b" id="q3b"><label for="q3b">20<sup>o</sup> Celsius</label><br/>
+<input type="radio" name="q3" value="c" id="q3c"><label for="q3c">26<sup>o</sup> Celsius</label><br/>
+<input type="radio" name="q3" value="d" id="q3d"><label for="q3d">31<sup>o</sup> Celsius</label><br/>
+</ul>
+
+<p class="question"><strong>Question 4:</strong> According to the map, the average monthly sea surface temperature at 5<sup>o</sup> North and 140<sup>o</sup> West is approximately:</p>
+
+<ul class="answers">
+<input type="radio" name="q4" value="a" id="q4a"><label for="q4a">15<sup>o</sup> Celsius</label><br/>
+<input type="radio" name="q4" value="b" id="q4b"><label for="q4b">20<sup>o</sup> Celsius</label><br/>
+<input type="radio" name="q4" value="c" id="q4c"><label for="q4c">26<sup>o</sup> Celsius</label><br/>
+<input type="radio" name="q4" value="d" id="q4d"><label for="q4d">31<sup>o</sup> Celsius</label><br/>
+</ul>
+
+<br/>
+<div id="results">            
+Check my answers
+</div>                
+
+<div id="category1">            
+<p>              
+<strong>Question 1:</strong> Incorrect. Please try again.</p>        
+</div>        
+
+<div id="category2">            
+<p>              
+<strong>Question 2:</strong> Incorrect. Please try again.</p>        
+</div>        
+
+<div id="category3">
+<p>
+<strong>Question 3:</strong> Incorrect. Please try again.</p>
+</div>
+
+<div id="category4">
+<p>
+<strong>Question 4:</strong> Incorrect. Please try again.</p>
+</div>
+
+<div id="category5">   
+<p>                
+You answered them all right!</p>        
+</div>
+
+<!--Change the link below to your live link. Don't link back to these templates-->
+
+<div id="closing"/>
+<p><a href="https://test2.nnvl.noaa.gov/StoryMaps/quiztemplates/4questions.html">Try Again</a></p>
+</div>
+
+
+</body>
+</html>
